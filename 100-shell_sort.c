@@ -26,6 +26,9 @@ void shell_sort(int *array, size_t size)
 {
 	size_t gap = 1, i = 0, j = 0, k = 0;
 
+	if (!array || !size)
+		return;
+
 	/* init gap with Knuth sequence*/
 	while (gap * 3 + 1 < size)
 		gap = gap * 3 + 1;
@@ -34,7 +37,7 @@ void shell_sort(int *array, size_t size)
 	{
 		for (j = i; j < size; ++j)
 			for (k = j;
-			(int)(k - i) >= 0 && array[k] < array[k - i]; k -= i)
+			(long)(k - i) >= 0 && array[k] < array[k - i]; k -= i)
 				_swap(&array[k - i], &array[k]);
 		print_array(array, size);
 	}
