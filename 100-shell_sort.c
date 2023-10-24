@@ -26,7 +26,7 @@ void shell_sort(int *array, size_t size)
 {
 	size_t gap = 1, i = 0, j = 0, k = 0;
 
-	if (!array || !size)
+	if (!array || size < 2)
 		return;
 
 	/* init gap with Knuth sequence*/
