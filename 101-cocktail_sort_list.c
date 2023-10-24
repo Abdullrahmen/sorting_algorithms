@@ -65,20 +65,30 @@ void cocktail_sort_list(listint_t **list)
 
 		for (; iter->next && iter->n < iter->next->n; iter = iter->next)
 			;
-		while (iter->next && iter->n > iter->next->n)
+		while (iter->next)
 		{
-			swap_adjacent(list, iter, 1);
-			swapped = 1;
-			print_list(*list);
+			if (iter->n > iter->next->n)
+			{
+				swap_adjacent(list, iter, 1);
+				swapped = 1;
+				print_list(*list);
+			}
+			else
+				iter = iter->next;
 		}
 
 		for (; iter->prev && iter->n > iter->prev->n; iter = iter->prev)
 			;
-		while (iter->prev && iter->n < iter->prev->n)
+		while (iter->prev)
 		{
-			swap_adjacent(list, iter, 0);
-			swapped = 1;
-			print_list(*list);
+			if (iter->n < iter->prev->n)
+			{
+				swap_adjacent(list, iter, 0);
+				swapped = 1;
+				print_list(*list);
+			}
+			else
+				iter = iter->prev;
 		}
 	}
 }
