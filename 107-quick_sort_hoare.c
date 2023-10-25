@@ -29,15 +29,17 @@ void _swap(int *i1, int *i2)
 int partition_hoare(int *array, int low, int high, size_t full_size)
 {
 	int pivot = array[high];
-	int i = low, j = high;
+	int i = low - 1, j = high + 1;
 
 	while (1)
 	{
+		do {
+			i++;
+		} while (array[i] < pivot);
 
-		while (array[i] < pivot)
-			++i;
-		while (array[j] > pivot)
-			--j;
+		do {
+			j--;
+		} while (array[j] > pivot);
 
 		if (i >= j)
 			return (i);
